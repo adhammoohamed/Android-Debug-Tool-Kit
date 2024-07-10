@@ -21,3 +21,9 @@ dependencyResolutionManagement {
 
 rootProject.name = "Android Debug Tool Kit"
 include(":app")
+include(":core")
+include(":features")
+include(":features:logcat")
+include(":features:apkgetter")
+include(":data")
+include(":domain")
