@@ -69,9 +69,15 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
+    // modules
+    implementation(project(":core"))
+    implementation(project(":features:logcat"))
+
     // hilt
     implementation(libs.com.google.dagger.hilt.android)
+    implementation(libs.androidx.hilt.navigation)
     kapt(libs.com.google.dagger.hilt.android.compiler)
+
 }
 kapt {
     correctErrorTypes = true
