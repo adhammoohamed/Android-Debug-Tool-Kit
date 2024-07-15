@@ -16,17 +16,20 @@ import com.example.logcatscreen.viewmodel.LogcatViewModel
 fun NavGraphBuilder.logcatScreen(navController: NavController, paddingValues: PaddingValues) {
     composable(LOGCAT_SCREEN_ROUTE) {
         val viewModel: LogcatViewModel = hiltViewModel()
-        val context = LocalContext.current
         val state by viewModel.appInfo.collectAsState()
+        val isLoading by viewModel.isLoading.collectAsState()
+        val context = LocalContext.current
+
         LaunchedEffect(Unit) {
             viewModel.getInstalledApps(context.packageManager)
         }
-
         LogcatScreen(
             navController = navController,
             paddingValues = paddingValues,
             viewModel = viewModel,
-            state = state
+            state = state,
+            isLoading = isLoading
         )
+
     }
 }
