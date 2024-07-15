@@ -9,7 +9,6 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
-import com.example.androiddebugtoolkit.ui.theme.AndroidDebugToolKitApp
 import com.example.androiddebugtoolkit.ui.theme.AndroidDebugToolKitTheme
 import dagger.hilt.android.AndroidEntryPoint
 

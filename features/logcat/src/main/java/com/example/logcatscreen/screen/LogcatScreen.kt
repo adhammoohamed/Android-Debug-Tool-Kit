@@ -39,19 +39,14 @@ import com.example.logcatscreen.viewmodel.LogcatViewModel
 @Composable
 fun LogcatScreen(
     navController: NavController,
-    viewModel: LogcatViewModel = hiltViewModel(),
+    viewModel: LogcatViewModel,
+    state: List<AppInfo>,
     paddingValues: PaddingValues
 ) {
-    val context = LocalContext.current
-    val state by viewModel.appInfo.collectAsState()
     val searchState by viewModel.searchQuery.collectAsState()
-    LaunchedEffect(Unit) {
-        viewModel.getInstalledApps(context.packageManager)
-    }
 
     LogcatScreenContent(
         paddingValues = paddingValues,
-        context = context,
         appsState = state,
         searchState = searchState,
         onSearch = viewModel::updateSearchQuery
@@ -62,7 +57,6 @@ fun LogcatScreen(
 @Composable
 fun LogcatScreenContent(
     paddingValues: PaddingValues,
-    context: Context,
     appsState: List<AppInfo>,
     searchState: String,
     onSearch: (String) -> Unit
@@ -84,7 +78,7 @@ fun LogcatScreenContent(
 
         LazyColumn(contentPadding = PaddingValues(vertical = 16.dp)) {
             items(appsState) { appInfo ->
-                AppCard(appInfo = appInfo, context)
+                AppCard(appInfo = appInfo)
             }
         }
     }
@@ -92,15 +86,13 @@ fun LogcatScreenContent(
 }
 
 @Composable
-fun AppCard(appInfo: AppInfo, context: Context) {
+fun AppCard(appInfo: AppInfo) {
     Card(modifier = Modifier
         .fillMaxWidth()
         .height(100.dp)
         .padding(vertical = 8.dp)
         .clickable {
-            Toast
-                .makeText(context, appInfo.name, Toast.LENGTH_SHORT)
-                .show()
+
         }) {
         Row(modifier = Modifier.fillMaxSize()) {
             DrawableImage(
