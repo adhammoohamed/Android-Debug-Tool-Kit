@@ -50,4 +50,3 @@ android-room = { id = "androidx.room", version.ref = "room-version" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp-version" }
 com-google-dagger-hilt-android = { id = "com.google.dagger.hilt.android", version.ref = "hilt-version" }
 
-
