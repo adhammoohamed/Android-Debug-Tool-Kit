@@ -19,14 +19,14 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             AndroidDebugToolKitTheme {
-                Scaffold {padding ->
+                Scaffold { padding ->
 
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    AndroidDebugToolKitApp(padding)
-                }
+                    Surface(
+                        modifier = Modifier.fillMaxSize(),
+                        color = MaterialTheme.colorScheme.background
+                    ) {
+                        AndroidDebugToolKitApp(padding)
+                    }
                 }
             }
         }
